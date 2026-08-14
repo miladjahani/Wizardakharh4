@@ -388,11 +388,19 @@ select.input option{background:var(--surface2)}
     <!-- STEP 3 -->
     <div class="sec" data-sec="3">
       <span class="eyebrow" data-i18n="ey_runtime">runtime</span>
-      <h2 data-i18n="h_method">Pick the runtime</h2>
-      <p class="lede" data-i18n="lede_method">Both host the same script. Workers is the recommended, fully-supported path.</p>
+      <h2 data-i18n="h_method">Pick the runtime & source</h2>
+      <p class="lede" data-i18n="lede_method">Select deployment method and worker source script.</p>
       <div class="seg" id="methodSeg" role="radiogroup">
         <button type="button" role="radio" aria-checked="true" data-method="workers"><b>⚡ <span data-i18n="method_workers">Cloudflare Workers</span></b><small data-i18n="method_workers_d">Native KV + vars binding. One-click, robust.</small></button>
         <button type="button" role="radio" aria-checked="false" data-method="pages"><b>📄 <span data-i18n="method_pages">Cloudflare Pages</span> <span class="beta">beta</span></b><small data-i18n="method_pages_d">Deployed as a _worker.js function. Bindings set via project config.</small></button>
+      </div>
+      <div class="field" style="margin-top:16px">
+        <label data-i18n="f_source_select_label">Worker Source Script</label>
+        <select class="input" id="sourceSelect">
+          <option value="./worker-source.js" data-i18n="source_worker">worker-source.js (CFnew v2.9.8c)</option>
+          <option value="./Source.js" data-i18n="source_alt">Source.js (Alternative)</option>
+        </select>
+        <div class="hint" data-i18n="f_source_select_help">Choose which worker script to deploy. Both support proxy functionality.</div>
       </div>
       <div class="actions"><button class="btn btn-ghost" data-back data-i18n="btn_back">← Back</button><span class="spacer"></span><button class="btn btn-primary" id="act3" data-i18n="btn_continue">Continue →</button></div>
     </div>
