@@ -7,7 +7,7 @@
 'use strict';
 
 /* ---- worker source fallback URL (override in UI if needed) ---- */
-var WORKER_SOURCE_URL = './worker-source.js';
+var WORKER_SOURCE_URL = './wizard/worker-source.js';
 var API = 'https://api.cloudflare.com/client/v4';   // legacy, unused now (proxy handles it)
 var COMPAT = '2025-01-01';
 
@@ -303,7 +303,7 @@ function loadZones(){
 
 /* ---- source fetch ---- */
 function fetchSource(){
-  var urls = [S.sourceUrl, './worker-source.js'].filter(Boolean);
+  var urls = [S.sourceUrl, './wizard/worker-source.js', './wizard/Source.js'].filter(Boolean);
   var i = 0;
   function tryNext(){
     if (i >= urls.length) throw new Error('worker source not found at ' + urls.join(' / '));
@@ -461,7 +461,7 @@ function init(){
   $('#customPath').value = S.customPath || '';
   $('#customDomain').value = S.customDomain || '';
   $('#sourceUrl').value = S.sourceUrl || WORKER_SOURCE_URL;
-  $('#sourceSelect').value = S.sourceUrl || './worker-source.js';
+  $('#sourceSelect').value = S.sourceUrl || './wizard/worker-source.js';
 
   var stored = localStorage.getItem('ef_token');
   if (stored) { $('#token').value = stored; S.token = stored; $('#remember').checked = true; toast(T('misc_stored')); }
