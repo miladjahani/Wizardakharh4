@@ -1,1 +1,25 @@
-Nothing should be ignored based on the provided file changes. The only modified file is 'wizard/wizard.js', which is a source code file and should not be added to .gitignore.
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.local
+
+# Build
+dist/
+build/
+.next/
+.svelte-kit/
+.astro/
+.nuxt/
+.output/
+*.tsbuildinfo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp

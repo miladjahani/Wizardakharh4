@@ -1,298 +1,206 @@
-# 🚀 miliconfig - Cloudflare Worker Deployment Wizard
+
 
 <div align="center">
+  
+# ⚡ ZEUS PANEL
 
-![Status](https://img.shields.io/badge/status-active-success)
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Cloudflare](https://img.shields.io/badge/platform-Cloudflare-orange)
-![Version](https://img.shields.io/badge/version-1.0.0-purple)
+[![Version](https://img.shields.io/badge/Version-v1.11.4-blue.svg?style=for-the-badge&logo=cloudflare)](https://github.com/zeus-panel/ZEUS-PANEL)
+[![Platform](https://img.shields.io/badge/Platform-Cloudflare%20Workers-f38020.svg?style=for-the-badge&logo=cloudflare&logoColor=white)](https://workers.cloudflare.com/)
+[![License](https://img.shields.io/badge/License-Proprietary%20(Non--Commercial)-red.svg?style=for-the-badge)](https://github.com/zeus-panel/ZEUS-PANEL/blob/main/LICENSE)
+[![Telegram](https://img.shields.io/badge/Community-PANEL__ZEUS-2CA5E0.svg?style=for-the-badge&logo=telegram)](https://t.me/PANEL_ZEUS)
+</div>
 
-**یک پنل مدیریت مدرن و هوشمند برای استقرار خودکار ورکرهای کلودفلر**
+<img  src="https://raw.githubusercontent.com/panel-zeus/Z-E-U-S/refs/heads/main/photos/dark.png"  width="100%"  alt="Zeus Panel Dark Mode"  style="border-radius: 12px; margin-bottom: 15px;">
 
-[ویژگی‌ها](#-ویژگی‌ها) • [شروع سریع](#-شروع-سریع) • [راهنمای استفاده](#-راهنمای-استفاده) • [تنظیمات پیشرفته](#-تنظیمات-پیشرفته) • [سوالات متداول](#-سوالات-متداول)
+  
+<img  src="https://raw.githubusercontent.com/panel-zeus/Z-E-U-S/refs/heads/main/photos/add.png"  width="100%"  alt="Zeus Panel Dark Mode"  style="border-radius: 12px; margin-bottom: 15px;">
+
+  
+
+<table  width="100%">
+
+<tr>
+
+<td width="50%" valign="middle" align="center">
+
+<img  src="https://raw.githubusercontent.com/panel-zeus/Z-E-U-S/refs/heads/main/photos/bot.png"  width="100%"  alt="Zeus Panel Status"  style="border-radius: 12px;">
+
+</td>
+
+<td width="50%" valign="middle" align="center">
+
+<img  src="https://raw.githubusercontent.com/panel-zeus/Z-E-U-S/refs/heads/main/photos/status.png"  width="100%"  alt="Zeus Panel Dark Mode"  style="border-radius: 12px;">
+
+</td>
+
+</tr>
+
+</table>
+
+
+[⚡️ Key Features](#️-features) • [🚀 Deployment Guide](#-quick-deployment-guide) • [🔎 IP Scanner](#-clean-ip-scanner) • [🛡️ SOCKS5 Proxy](#️-build-your-own-socks5-proxy-zeus-relay) • [❤️ Donate](#-donate--support) • [⚖️ License & Copyright](#license-copyright) • [Credits](#credits-section)
 
 </div>
 
 ---
 
-## 📖 درباره پروژه
+# ⚡️ Features
+🌍 Multi-Location Routing: Seamlessly assign up to five distinct proxies or geographic locations simultaneously to individual users, providing diversified connection pathways.
 
-**miliconfig** یک ابزار تحت وب پیشرفته است که فرآیند ساخت، پیکربندی و استقرار ورکرهای کلودفلر را به ساده‌ترین شکل ممکن تبدیل می‌کند. با طراحی مدرن الهام‌گرفته از فیگما و تجربه کاربری بی‌نظیر، شما می‌توانید در کمتر از ۲ دقیقه ورکر خود را راه‌اندازی کنید.
+⚡️ Smart Buffering Engine: Advanced dynamic data transfer management implemented to significantly boost overall connection speed and stability.
 
-### ✨ چرا miliconfig؟
+👥 Advanced User Management: Enforce strict limits based on traffic volume (GB), time expiration (Days), total requests, and concurrent devices, featuring highly accurate tracking for CGNAT and mobile network environments.
 
-- 🎯 **بدون نیاز به دانش فنی**: تمام تنظیمات به صورت خودکار انجام می‌شود
-- 🎨 **طراحی خیره‌کننده**: UI مدرن با انیمیشن‌های روان و جذاب
-- ⚡ **سرعت بالا**: تولید توکن و استقرار در چند ثانیه
-- 🔒 **امنیت کامل**: مدیریت هوشمند توکن‌های API
-- 📱 **واکنش‌گرا**: کارایی عالی روی موبایل، تبلت و دسکتاپ
+♻️ Automated Quota Resets: Scheduled auto-reset capabilities for volume and request counters based on specified timeframes.
 
----
+🛠 Bulk Operations: Comprehensive multi-select tools for batch user editing, deletion, and quota resets.
 
-## 🌟 ویژگی‌ها
+🛡 Anti-Filtering Mechanisms: Built-in TLS Fragment support and custom ClientHello Fingerprint simulators to bypass DPI.
 
-### 🔐 مدیریت هوشمند توکن
-- ✅ **تولید خودکار توکن**: با کلیک روی "تنظیمات پیش‌فرض"، تمام Permissionها به صورت خودکار انتخاب می‌شوند
-- ✅ **راهنمای گام‌به‌گام**: مودال آموزشی قبل از هدایت به کلودفلر
-- ✅ **کپی آسان**: دریافت توکن با یک کلیک پس از ساخت
-- ✅ **ذخیره امن**: استفاده از sessionStorage برای حفظ امنیت
+📱 Modern UI: A responsive, mobile-friendly interface built with Tailwind CSS, featuring full AMOLED Dark Mode.
 
-### 🎨 رابط کاربری حرفه‌ای
-- 🎨 **طراحی Figma-style**: گرادینت‌های مدرن، سایه‌های دقیق، انیمیشن‌های smooth
-- 🌓 **حالت تیره/روشن**: تم تاریک پیش‌فرض با قابلیت تغییر
-- 📊 **نمایش وضعیت واقعی**: Progress Bar دقیق برای هر مرحله
-- 🔔 **سیستم اعلان**: Toast notifications برای بازخوردهای لحظه‌ای
+🛑 Smart Content Blocker: Integrated DNS-over-HTTPS (DoH) engine to actively intercept and block NSFW content and advertisements.
 
-### ⚙️ امکانات پیشرفته
-- 📧 **ایمیل موقت**: یکپارچه با [TempMail](https://tempmail.ing/) برای ثبت‌نام سریع
-- 🌍 **انتخاب منطقه**: پشتیبانی از تمام Locationهای کلودفلر
-- 📝 **ویرایشگر کد**: مشاهده و ویرایش worker-source.js قبل از استقرار
-- 🔄 **بروزرسانی آسان**: امکان Deploy مجدد با تنظیمات جدید
-- 🗑️ **حذف ورکر**: پاکسازی کامل با یک کلیک
+🌐 Dynamic IP Rotation: Automated rotation of clean Cloudflare edge IPs at custom, user-defined intervals.
 
-### 🛠️ منابع و لینک‌ها
-- 🔗 **منبع اصلی**: [GitHub Repository](https://github.com/milic0nf1g/wizard)
-- 📄 **Worker Source**: فایل `worker-source.js` به صورت لوکال بارگذاری می‌شود
-- 🌐 **TempMail**: [https://tempmail.ing/](https://tempmail.ing/)
+🔀 Automated Proxy Fallback: Intelligent auto-replacement of failing upstream user proxies with healthy nodes dynamically fetched from dedicated VIP proxy repositories.
+
+📊 Live Quota Monitoring: Real-time tracking of Cloudflare Worker requests to proactively prevent account bans or suspensions.
+
+🔗 Self-Service Portals: Auto-generation of robust, case-insensitive Subscription Links, QR codes, and dedicated real-time status pages for every user.
+
+🔄 OTA Core Updates: Automated edge deployment system updating the panel directly without database or data loss.
+
+🗄 Complete Backup System: Full JSON export and import utility covering the entire database, server configuration state, and advanced user proxy preferences.
+
+🚀 One-Click Deployment: Complete provisioning of the panel, subdomain, and D1 database directly via the Telegram Bot.
+
+🤖 Multi-Account Bot Management: Simultaneously manage multiple Cloudflare accounts, execute panel updates, and recover passwords using the Telegram Bot.
+
+🔌 Comprehensive Port Support: Native support for all Cloudflare TLS and non-TLS ports, including configurations for custom network ports.
+
+☁️ Cloudflare Ecosystem Optimized: Architected strictly within Cloudflare infrastructure limits, utilizing intelligent D1 connection pooling and Queue batching mechanisms for maximum operational efficiency.
 
 ---
 
-## 🚀 شروع سریع
+# 🚀 Quick Deployment Guide
 
-### پیش‌نیازها
-- اکانت Cloudflare (رایگان)
-- مرورگر مدرن (Chrome, Firefox, Edge, Safari)
-- اتصال اینترنت پایدار
+<div align="center">
 
-### مراحل راه‌اندازی
+<a href="https://dash.cloudflare.com/" target="_blank">
+<img src="https://img.shields.io/badge/Cloudflare_Dashboard-Login-f38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare Dashboard" height="40">
+</a>
 
-#### 1️⃣ ورود به پنل
+<div align="center">
+First, log into your Cloudflare dashboard. Ensure you are using a verified email address, then proceed with the deployment method below.
+</div>
+
+<br>
+
+<a href="https://t.me/ZEUS_PANEL_BOT" target="_blank">
+<img src="https://img.shields.io/badge/Zeus_Telegram_Bot-Start_Bot-0088cc?style=for-the-badge&logo=telegram&logoColor=white" alt="Zeus Telegram Bot" height="40">
+</a>
+
+</div>
+
+<br>
+
+## 🤖  Deploy via Telegram Bot 
+
+1. 🌐 Access the **[ZEUS Telegram Bot](https://t.me/ZEUS_PANEL_BOT)** and click `Start`.
+2. 👤 From the main menu, click on **"➕ Register Cloudflare Account"**.
+3. 🔗 Click the inline button **"🔑 Get Cloudflare Token"** to be redirected to your Cloudflare account.
+4. 🟦 Scroll to the bottom of the Cloudflare page, click the blue `Continue to summary` button, and then click `Create Token`.
+5. 🔑 Copy the generated token and **send it directly in the bot chat**.
+6. ⚡️ Once the token is verified, return to the main menu, click **"🚀 Build New Panel"**, and select your account. Your D1 database and panel will be automatically deployed.
+
+---
+
+> [!CAUTION]
+> **CRITICAL SECURITY NOTE:** Ensure you securely save the initial administrative password you set during your first login to the panel. Do not lose it!
+
+---
+
+
+# 🛡️ Build Your Own SOCKS5 Proxy (Zeus Relay)
+
+A dedicated bash script is provided to instantly deploy a private, secure SOCKS5 proxy on any Linux VPS (Ubuntu, Debian, CentOS, Rocky Linux). This is highly recommended for users who wish to create VIP residential proxies to route traffic through clean, dedicated IPs.
+
+To install, update, or remove the Dante SOCKS5 proxy, execute the following command on your Linux server with root privileges:
+
 ```bash
-# اگر از نسخه Self-hosted استفاده می‌کنید:
-# فایل index.html را در مرورگر باز کنید یا روی سرور آپلود کنید
+bash <(curl -Ls https://raw.githubusercontent.com/panel-zeus/Z-E-U-S/main/zeus-relay.sh | sed 's/\r$//')
 ```
 
-#### 2️⃣ ساخت توکن API
-1. روی دکمه **"🔑 ساخت توکن"** کلیک کنید
-2. مودال راهنما باز می‌شود - مطالعه کنید
-3. روی **"Open Cloudflare Token Builder"** کلیک کنید
-4. در صفحه کلودفلر:
-   - ✅ تمام Permissionها به صورت خودکار انتخاب شده‌اند
-   - ✅ فقط بررسی کنید و دکمه **"Continue to summary"** را بزنید
-   - ✅ نام توکن را وارد کرده و **"Create Token"** را بزنید
-5. توکن را کپی کرده و در مودال وارد کنید
-6. دکمه **"ذخیره توکن"** را بزنید
-
-#### 3️⃣ دریافت ایمیل موقت
-1. روی **"📧 دریافت ایمیل موقت"** کلیک کنید
-2. به صورت خودکار به [TempMail](https://tempmail.ing/) هدایت می‌شوید
-3. ایمیل را کپی کرده و در پنل وارد کنید
-
-#### 4️⃣ انتخاب منطقه و استقرار
-1. Location مورد نظر را انتخاب کنید (مثلاً `us-east`)
-2. روی **"🚀 ایجاد ورکر"** کلیک کنید
-3. منتظر بمانید تا فرآیند تکمیل شود (Progress Bar نمایش داده می‌شود)
-4. لینک ورکر خود را دریافت کنید! 🎉
+The script features an interactive menu, automatic port configuration, random secure credential generation (username/password), and native IPv4/IPv6 integration.
 
 ---
 
-## 📸 تصاویر محیط برنامه
+# 🔎 Clean IP Scanner
 
-<div align="center">
+ZEUS Panel features a highly optimized, multi-threaded local IP scanner. You can quickly find the fastest and most stable clean Cloudflare IPs directly from your device using the methods below:
 
-### صفحه اصلی
-![Dashboard](https://via.placeholder.com/800x450/1a1a2e/00ff88?text=miliconfig+Dashboard+Preview)
+### 📱 Mobile Users (Pydroid 3 - Android)
+1. Install **[Pydroid 3](https://play.google.com/store/apps/details?id=ru.iiec.pydroid3)** from the Google Play Store.
+2. Open the app, navigate to the **Terminal** from the side menu, and execute the following command:
 
-### مودال ساخت توکن
-![Token Modal](https://via.placeholder.com/600x400/16213e/0f3460?text=Token+Builder+Modal)
+```bash
+python -c "import urllib.request; req = urllib.request.Request('https://raw.githubusercontent.com/panel-zeus/Z-E-U-S/refs/heads/main/zeus-scanner.txt', headers={'User-Agent': 'Mozilla/5.0'}); exec(urllib.request.urlopen(req).read().decode('utf-8').split('---PYTH' + 'ON---')[1].split('---POWERSHELL---')[0].strip())"
 
-### فرآیند استقرار
-![Deployment](https://via.placeholder.com/800x450/0f3460/e94560?text=Deployment+Progress)
-
-</div>
-
----
-
-## 🎯 راهنمای استفاده
-
-### بخش‌های اصلی پنل
-
-#### 🔑 بخش توکن API
 ```
-┌─────────────────────────────────────┐
-│  وضعیت: ✅ فعال                     │
-│  توکن: ●●●●●●●●●●●●●●●●            │
-│  [ویرایش] [حذف]                    │
-└─────────────────────────────────────┘
-```
-- **ساخت توکن جدید**: هدایت هوشمند به Cloudflare با تنظیمات از پیش‌پر شده
-- **ویرایش**: تعویض توکن فعلی
-- **حذف**: پاک کردن توکن از حافظه
 
-#### 📧 بخش ایمیل
-```
-┌─────────────────────────────────────┐
-│  ایمیل موقت: user@tmpmail.net      │
-│  [دریافت ایمیل جدید]               │
-└─────────────────────────────────────┘
-```
-- یکپارچه با [TempMail](https://tempmail.ing/)
-- مناسب برای ثبت‌نام و تست سرویس‌ها
+3. Once the server initializes, open `http://127.0.0.1:8000` in your web browser.
 
-#### 🌍 انتخاب Location
-```
-┌─────────────────────────────────────┐
-│  🌐 us-east (United States)        ▼│
-└─────────────────────────────────────┘
-```
-- لیست کامل Locationهای کلودفلر
-- پیشنهاد بهترین منطقه بر اساس موقعیت شما
+### 💻 Windows Users (CMD / PowerShell)
 
-#### 🚀 کنترل‌های استقرار
-```
-┌─────────────────────────────────────┐
-│  [🚀 ایجاد ورکر]  [🔄 بروزرسانی]   │
-│  [🗑️ حذف ورکر]   [📄 مشاهده کد]   │
-└─────────────────────────────────────┘
+Open **Command Prompt (CMD)** in Windows, paste the following command, and hit Enter. The high-speed scanner interface will automatically compile and launch:
+
+```cmd
+powershell -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 -bor [Net.SecurityProtocolType]::Tls13; $wc = New-Object System.Net.WebClient; $wc.Encoding = [System.Text.Encoding]::UTF8; $text = ($wc.DownloadString('https://raw.githubusercontent.com/panel-zeus/Z-E-U-S/refs/heads/main/zeus-scanner.txt') -split '---POWERSHELL---')[1].Trim(); [IO.File]::WriteAllText('zeus-scanner.ps1', $text, [System.Text.Encoding]::UTF8); .\zeus-scanner.ps1"
+
 ```
 
 ---
 
-## ⚙️ تنظیمات پیشرفته
 
-### شخصی‌سازی Worker Source
-اگر می‌خواهید کد ورکر را تغییر دهید:
-1. روی **"📄 مشاهده کد"** کلیک کنید
-2. کد `worker-source.js` را مشاهده و ویرایش کنید
-3. تغییرات را ذخیره کرده و Deploy کنید
+# 💰 Donate & Support
 
-> ⚠️ **توجه**: فقط در صورتی کد را تغییر دهید که با JavaScript آشنایی دارید. تغییرات نادرست ممکن است باعث خطا در ورکر شود.
+<p align="center">Built with ❤️</p>
 
-### مدیریت چندین ورکر
-برای مدیریت چندین ورکر:
-1. پس از ساخت اولین ورکر، می‌توانید با تغییر نام در کد، ورکر جدید بسازید
-2. هر ورکر URL منحصر به فرد خود را خواهد داشت
+<p align="center"><a href="https://donatonion.ir-netlify.workers.dev"><b>https://donatonion.ir-netlify.workers.dev</b></a></p>
+
+<p align="center">Thank you for your support in keeping this open-source project alive and actively developed! 🙏</p>
 
 ---
 
-## 🔒 امنیت و حریم خصوصی
+## Star History
 
-### چگونه miliconfig از اطلاعات شما محافظت می‌کند؟
-
-- 🔐 **ذخیره‌سازی محلی**: توکن API فقط در `sessionStorage` مرورگر شما ذخیره می‌شود
-- 🚫 **عدم ارسال به سرور خارجی**: هیچ اطلاعاتی به سرورهای شخص ثالث ارسال نمی‌شود
-- 🔄 **پاکسازی خودکار**: با بستن تب مرورگر، توکن حذف می‌شود (در صورت استفاده از sessionStorage)
-- 🛡️ **رمزنگاری**: ارتباط با Cloudflare از طریق HTTPS امن انجام می‌شود
-
-### بهترین روش‌های امنیتی
-1. ✅ توکن را با کسی به اشتراک نگذارید
-2. ✅ پس از اتمام کار، توکن را حذف کنید
-3. ✅ از توکن‌های با دسترسی محدود استفاده کنید
-4. ✅ регулярно توکن‌های قدیمی را بازنشانی کنید
+<a href="https://www.star-history.com/?repos=panel-zeus%2FZ-E-U-S&type=date&legend=bottom-right">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=panel-zeus/Z-E-U-S&type=date&theme=dark&legend=bottom-right&sealed_token=r3Lb_3aKfu0utexFy3xJoisRGRSGS4OCoQg3ZS5TM1QCTppem2RU8sLiVsD6UQ38Ah92MwuZU_PjyQTFM5yY3rAw14WEjtonC70muFBH4RbXxBDGIy5iIw" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=panel-zeus/Z-E-U-S&type=date&legend=bottom-right&sealed_token=r3Lb_3aKfu0utexFy3xJoisRGRSGS4OCoQg3ZS5TM1QCTppem2RU8sLiVsD6UQ38Ah92MwuZU_PjyQTFM5yY3rAw14WEjtonC70muFBH4RbXxBDGIy5iIw" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=panel-zeus/Z-E-U-S&type=date&legend=bottom-right&sealed_token=r3Lb_3aKfu0utexFy3xJoisRGRSGS4OCoQg3ZS5TM1QCTppem2RU8sLiVsD6UQ38Ah92MwuZU_PjyQTFM5yY3rAw14WEjtonC70muFBH4RbXxBDGIy5iIw" />
+ </picture>
+</a>
 
 ---
 
-## ❓ سوالات متداول
+## <a id="license-copyright"></a>⚖️ License & Copyright
 
-<details>
-<summary>❓ آیا این سرویس رایگان است؟</summary>
+**Copyright (c) 2026 ZEUS PANEL Contributors. All Rights Reserved.**
 
-بله! miliconfig کاملاً رایگان است و از API رایگان Cloudflare استفاده می‌کند. تنها هزینه‌ای که ممکن است داشته باشید، استفاده از پلن‌های پولی Cloudflare است که اختیاری است.
-</details>
+This software is provided for **personal, non-commercial use only**. By downloading or using this software, you agree to the following strict conditions:
 
-<details>
-<summary>❓ آیا نیاز به نصب نرم‌افزار دارم؟</summary>
+1. 🚫 **No Resale or Monetization:** You may not sell, rent, or lease this software, nor use it to provide commercial services (e.g., selling panel access or configurations).
+2. 🚫 **No Modifications or Derivatives:** You are strictly prohibited from modifying, adapting, translating, or creating derivative works based on this source code.
+3. 🚫 **No Redistribution:** You may not host, publish, or redistribute this software on any other repository, platform, or service without explicit written permission.
 
-خیر! miliconfig یک ابزار تحت وب است و فقط به یک مرورگر مدرن نیاز دارد. هیچ نیازی به نصب Node.js، Python یا سایر ابزارها نیست.
-</details>
-
-<details>
-<summary>❓ توکن API من کجا ذخیره می‌شود؟</summary>
-
-توکن شما فقط در `sessionStorage` مرورگر خودتان ذخیره می‌شود و به هیچ سرور دیگری ارسال نمی‌گردد. با بستن تب مرورگر، توکن حذف می‌شود.
-</details>
-
-<details>
-<summary>❓ چه کاری انجام دهم اگر ورکر خطا داد؟</summary>
-
-1. بررسی کنید توکن API معتبر باشد
-2. مطمئن شوید Location را درست انتخاب کرده‌اید
-3. کنسول مرورگر (F12) را برای مشاهده خطاها بررسی کنید
-4. در صورت نیاز، ورکر را حذف و مجدداً ایجاد کنید
-</details>
-
-<details>
-<summary>❓ آیا می‌توانم کد ورکر را سفارشی کنم؟</summary>
-
-بله! با کلیک روی دکمه "📄 مشاهده کد"، می‌توانید source code ورکر را مشاهده و ویرایش کنید. سپس تغییرات را Deploy نمایید.
-</details>
-
-<details>
-<summary>❓ لینک TempMail کار نمی‌کند، چه کنم؟</summary>
-
-لینک رسمی [https://tempmail.ing/](https://tempmail.ing/) را مستقیماً در مرورگر باز کنید و ایمیل موقت دریافت نمایید.
-</details>
+The source code is published solely for transparency and personal deployment. For the full legal terms, please read the [LICENSE](LICENSE) file included in this repository.
 
 ---
 
-## 🤝 مشارکت در پروژه
+## <a id="credits-section"></a>Credits
+This panel was originally conceptualized and authored by Arad and Morgan. The current version represents an extended, highly optimized, and heavily refactored iteration of that core logic.
 
-از ایده‌ها، پیشنهادات و گزارش باگ‌های شما استقبال می‌کنیم!
-
-### چگونه مشارکت کنیم؟
-1. Fork پروژه
-2. Branch جدید بسازید (`git checkout -b feature/AmazingFeature`)
-3. تغییرات را Commit کنید (`git commit -m 'Add some AmazingFeature'`)
-4. Push به Branch (`git push origin feature/AmazingFeature`)
-5. Pull Request باز کنید
-
-### گزارش باگ
-اگر باگی پیدا کردید، لطفاً در [GitHub Issues](https://github.com/milic0nf1g/wizard/issues) گزارش دهید.
-
----
-
-## 📄 مجوز
-
-این پروژه تحت مجوز **MIT License** منتشر شده است. برای اطلاعات بیشتر فایل [LICENSE](LICENSE) را مطالعه کنید.
-
----
-
-## 🙏 تشکر و قدردانی
-
-- 🌟 **Cloudflare** برای ارائه پلتفرم عالی Workers
-- 🎨 **طراحان جامعه Open Source** برای الهام‌بخشی در UI/UX
-- 💡 **کاربران عزیز** برای بازخوردهای ارزشمند
-
----
-
-## 📞 ارتباط با ما
-
-- 📧 **ایمیل**: support@miliconfig.dev (غیرفعال - فقط جهت نمایش)
-- 💬 **GitHub Discussions**: [بحث و گفتگو](https://github.com/milic0nf1g/wizard/discussions)
-- 🐦 **Twitter**: [@milic0nf1g](https://twitter.com/milic0nf1g) (نمادین)
-
----
-
-<div align="center">
-
-### ❤️ ساخته شده با عشق توسط جامعه Open Source
-
-**[miliconfig](https://github.com/milic0nf1g/wizard)** © 2024
-
-⭐ اگر از این پروژه خوشتان آمد، حتماً ستاره بدهید!
-
-</div>
-
----
-
-## 📚 منابع مفید
-
-- 📖 [مستندات Cloudflare Workers](https://developers.cloudflare.com/workers/)
-- 🔑 [مدیریت توکن‌های API کلودفلر](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/)
-- 🌐 [TempMail - ایمیل موقت](https://tempmail.ing/)
-- 💻 [آموزش JavaScript مدرن](https://javascript.info/)
-- 🎨 [الهام‌بخشی طراحی از Dribbble](https://dribbble.com/)
-
----
-
-> 💡 **نکته حرفه‌ای**: برای بهترین تجربه، از آخرین نسخه مرورگر Chrome یا Firefox استفاده کنید و افزونه‌های مسدودکننده تبلیغات را غیرفعال نمایید.
+* **Original Authors:** The baseline concept and initial framework belong to [AG-Morgan](https://github.com/AG-Morgan) and [aradava](https://github.com/aradava).
+* **Current Maintainer:** The system upgrades, advanced network capabilities, UI redesign, and automated deployment infrastructure have been developed and maintained by [PANEL_ZEUS](https://t.me/PANEL_ZEUS).
