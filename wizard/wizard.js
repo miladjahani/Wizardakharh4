@@ -304,7 +304,7 @@ function loadZones(){
 /* ---- source fetch ---- */
 function fetchSource(){
   // اولویت با سورس انتخاب شده توسط کاربر است
-  var selectedUrl = S.sourceUrl || './wizard/worker-source.js';
+  var selectedUrl = S.sourceUrl || $('#sourceSelect').value || './wizard/worker-source.js';
   var urls = [selectedUrl, './wizard/worker-source.js', './wizard/Source.js'].filter(Boolean);
   var i = 0;
   function tryNext(){
