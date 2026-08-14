@@ -53,7 +53,7 @@ en: {
  err_name_invalid:'name must be 1–63 chars: a–z, 0–9, hyphen (not at edges)', err_path_invalid:'path may contain only a–z A–Z 0–9 _ -', err_domain_needs_zone:'pick a zone for the custom domain',
  misc_copied:'copied to clipboard', misc_stored:'stored token loaded — verify to continue', misc_autocaught:'token auto-filled from clipboard — verifying…',
  l_verify:'Verifying token', l_accounts:'Listing accounts', l_zones:'Listing zones',
- l_source:'Fetching worker source', l_kv:'Creating KV namespace', l_upload:'Uploading & deploying script',
+ l_source:'Fetching worker source', l_kv:'Creating KV namespace', l_d1:'Creating D1 database', l_d1:'Creating D1 database', l_d1:'Creating D1 database', l_upload:'Uploading & deploying script',
  l_devroute:'Enabling workers.dev route', l_subdomain:'Reading workers.dev subdomain',
  l_proj:'Creating Pages project', l_bind:'Binding KV & variables to project', l_pages_dep:'Uploading _worker.js deployment', l_cdom:'Attaching custom domain',
  l_done:'Deployment complete', req:'required', opt:'optional',
@@ -321,11 +321,12 @@ function fetchSource(){
 }
 
 /* ---- deploy ---- */
-function buildFormData(code, kvId){
+function buildFormData(code, kvId, d1Id){
   var meta = {
     main_module: 'worker.js', compatibility_date: COMPAT,
     bindings: [
       { type:'kv_namespace', name:'C', namespace_id: kvId },
+      { type:'d1', name:'DB', id: d1Id },
       { type:'plain_text', name:'u', text: S.uuid },
       { type:'plain_text', name:'d', text: S.customPath || '' },
       { type:'plain_text', name:'p', text: '' }
@@ -342,16 +343,20 @@ function deploy(){
   setSig('verify', T('sig_verify'));
   var name = S.scriptName, acc = S.accountId;
 
-  var code, kvId, baseUrl, panelKey = S.customPath || S.uuid;
+  var code, kvId, d1Id, baseUrl, panelKey = S.customPath || S.uuid;
 
+  var d1Id;
   Promise.resolve().then(function(){
     var d = timed('l_source'); return fetchSource().then(function(c){ code=c; d(); log('   ' + code.length + ' bytes · module worker', 'ok'); });
   }).then(function(){
     var d = timed('l_kv');
     return api('POST', '/accounts/'+acc+'/storage/kv/namespaces', { title: name + '-kv' }).then(function(r){ kvId=r.result.id; d(); });
   }).then(function(){
-    if (S.method === 'workers') return deployWorkers(code, kvId, name, acc).then(function(u){ baseUrl=u; });
-    return deployPages(code, kvId, name, acc).then(function(u){ baseUrl=u; });
+    var d = timed('l_d1');
+    return api('POST', '/accounts/'+acc+'/d1/database', { name: name + '-d1' }).then(function(r){ d1Id=r.result.uuid; d(); });
+  }).then(function(){
+    if (S.method === 'workers') return deployWorkers(code, kvId, d1Id, name, acc).then(function(u){ baseUrl=u; });
+    return deployPages(code, kvId, d1Id, name, acc).then(function(u){ baseUrl=u; });
   }).then(function(){
     if (!S.customDomain) return;
     var d = timed('l_cdom');
@@ -372,9 +377,9 @@ function deploy(){
   });
 }
 
-function deployWorkers(code, kvId, name, acc){
+function deployWorkers(code, kvId, d1Id, name, acc){
   var d = timed('l_upload');
-  return api('PUT', '/accounts/'+acc+'/workers/scripts/'+name, buildFormData(code, kvId)).then(function(){ d(); })
+  return api('PUT', '/accounts/'+acc+'/workers/scripts/'+name, buildFormData(code, kvId, d1Id)).then(function(){ d(); })
   .then(function(){
     // 1) روشن‌کردن زیردامنهٔ کلی workers.dev برای کل حساب (اگر قبلاً نبوده)
     var d2 = timed('l_devroute');
@@ -406,7 +411,7 @@ function deployWorkers(code, kvId, name, acc){
   });
 }
 
-function deployPages(code, kvId, name, acc){
+function deployPages(code, kvId, d1Id, name, acc){
   var d = timed('l_proj');
   return api('POST', '/accounts/'+acc+'/pages/projects', { name:name, production_branch:'main' })
     .then(function(){ d(); })
@@ -416,6 +421,7 @@ function deployPages(code, kvId, name, acc){
     var cfg = { deployment_configs:{ production:{
       compatibility_date: COMPAT,
       kv_namespaces:{ C:{ namespace_id: kvId } },
+      d1_databases:{ DB:{ id: d1Id } },
       environment_variables:{ u:{ value:S.uuid, type:'plain_text' }, d:{ value:S.customPath||'', type:'plain_text' }, p:{ value:'', type:'plain_text' } }
     }}};
     return api('PATCH', '/accounts/'+acc+'/pages/projects/'+name, cfg).then(function(){ d2(); }).catch(function(e){ removeCaret(); log('⚠ bindings: ' + e.message + ' (set manually in Pages → Settings)', 'warn'); });
