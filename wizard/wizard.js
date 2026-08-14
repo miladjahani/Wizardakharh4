@@ -203,7 +203,7 @@ function api(method, path, body, extraHeaders) {
     if (k.toLowerCase() !== 'authorization') h[k] = extraHeaders[k];
   });
 
-  return fetch('https://api.cloudflare.com/client/v4' + path, { method: method, headers: h, body: b }).then(function (r) {
+  return fetch('/__cf/' + path, { method: method, headers: h, body: b }).then(function (r) {
     var ct = r.headers.get('content-type') || '';
     return (ct.indexOf('json') > -1 ? r.json() : r.text()).then(function (data) {
       if (!r.ok || (data && data.success === false)) {
