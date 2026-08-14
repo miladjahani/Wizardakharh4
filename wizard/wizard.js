@@ -32,9 +32,10 @@ en: {
  f_verify_btn:'Verify & continue →',
  ey_target:'target', h_account:'Choose the account', lede_account:'The worker and its KV namespace will be created under this account.',
  f_account_label:'Cloudflare account', btn_continue:'Continue →', btn_back:'← Back',
- ey_runtime:'runtime', h_method:'Pick the runtime', lede_method:'Both host the same script. Workers is the recommended, fully-supported path.',
+ ey_runtime:'runtime', h_method:'Pick the runtime & source', lede_method:'Select deployment method and worker source script.',
  method_workers:'Cloudflare Workers', method_workers_d:'Native KV + vars binding. One-click, robust.',
  method_pages:'Cloudflare Pages', method_pages_d:'Deployed as a _worker.js function. Bindings set via project config.',
+ f_source_select_label:'Worker Source Script', source_worker:'worker-source.js (CFnew v2.9.8c)', source_alt:'Source.js (Alternative)', f_source_select_help:'Choose which worker script to deploy. Both support proxy functionality.',
  ey_build:'build config', h_config:'Name & tune it', lede_config:'These become the worker name, its access secret, and optional routing.',
  f_name_label:'Worker / project name', f_name_help:'lowercase, digits, hyphens · 1–63 chars · becomes <name>.workers.dev',
  f_uuid_label:'Access secret / UUID (variable u)', f_uuid_help:'this is your private panel key — keep it secret',
@@ -87,9 +88,10 @@ fa: {
  f_verify_btn:'بررسی و ادامه →',
  ey_target:'هدف', h_account:'حساب را انتخاب کن', lede_account:'ورکر و فضای KV آن زیر این حساب ساخته می‌شوند.',
  f_account_label:'حساب کلودفلر', btn_continue:'ادامه →', btn_back:'→ برگشت',
- ey_runtime:'محیط اجرا', h_method:'محیط اجرا را انتخاب کن', lede_method:'هر دو یک اسکریپت را میزبانی می‌کنند. Workers مسیر پیشنهادی و کاملاً پشتیبانی‌شده است.',
+ ey_runtime:'محیط اجرا', h_method:'محیط اجرا و منبع را انتخاب کن', lede_method:'روش استقرار و اسکریپت منبع ورکر را انتخاب کن.',
  method_workers:'Cloudflare Workers', method_workers_d:'اتصال بومی KV و متغیرها. یک‌کلیکی و مطمئن.',
  method_pages:'Cloudflare Pages', method_pages_d:'به‌عنوان تابع _worker.js مستقر می‌شود. اتصال‌ها از طریق پیکربندی پروژه.',
+ f_source_select_label:'اسکریپت منبع ورکر', source_worker:'worker-source.js (CFnew v2.9.8c)', source_alt:'Source.js (جایگزین)', f_source_select_help:'انتخاب کن کدام اسکریپت ورکر مستقر شود. هر دو از عملکرد پروکسی پشتیبانی می‌کنند.',
  ey_build:'پیکربندی ساخت', h_config:'نام‌گذاری و تنظیم', lede_config:'این‌ها نام ورکر، رمز دسترسی و مسیریابی اختیاری می‌شوند.',
  f_name_label:'نام ورکر / پروژه', f_name_help:'حروف کوچک، عدد، خط‌تیره · ۱–۶۳ کاراکتر · می‌شود <name>.workers.dev',
  f_uuid_label:'رمز دسترسی / UUID (متغیر u)', f_uuid_help:'این کلید خصوصی پنل توست — محرمانه نگه دار',
@@ -301,7 +303,7 @@ function loadZones(){
 
 /* ---- source fetch ---- */
 function fetchSource(){
-  var urls = ['./worker-source.js', S.sourceUrl].filter(Boolean);
+  var urls = [S.sourceUrl, './worker-source.js'].filter(Boolean);
   var i = 0;
   function tryNext(){
     if (i >= urls.length) throw new Error('worker source not found at ' + urls.join(' / '));
@@ -459,6 +461,7 @@ function init(){
   $('#customPath').value = S.customPath || '';
   $('#customDomain').value = S.customDomain || '';
   $('#sourceUrl').value = S.sourceUrl || WORKER_SOURCE_URL;
+  $('#sourceSelect').value = S.sourceUrl || './worker-source.js';
 
   var stored = localStorage.getItem('ef_token');
   if (stored) { $('#token').value = stored; S.token = stored; $('#remember').checked = true; toast(T('misc_stored')); }
@@ -480,6 +483,7 @@ function init(){
   };
 
   $all('#methodSeg button').forEach(function(b){ b.onclick=function(){ $all('#methodSeg button').forEach(function(x){x.setAttribute('aria-checked','false');}); b.setAttribute('aria-checked','true'); S.method=b.getAttribute('data-method'); }; });
+  $('#sourceSelect').onchange = function(){ S.sourceUrl = this.value; };
   $('#act3').onclick = function(){ gotoStep(4); loadZones(); };
 
   $('#rerollName').onclick=function(){ S.scriptName=genName(); $('#scriptName').value=S.scriptName; };
