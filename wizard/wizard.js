@@ -186,7 +186,8 @@ function toast(msg){ var t=$('#toast'); t.textContent=msg; t.classList.add('on')
 /* ---- api (SAME-ORIGIN via /__cf proxy — no CORS preflight) ---- */
 function api(method, path, body, extraHeaders) {
   extraHeaders = extraHeaders || {};
-  var h = { 'X-CF-Token': S.token };          // same-origin header → no preflight
+  var isGitHub = location.hostname.indexOf('github.io') > -1;
+  var h = isGitHub ? { 'X-Auth-Email': '', 'X-Auth-Key': '', 'Authorization': 'Bearer ' + S.token } : { 'X-CF-Token': S.token };
   var b;
   if (body !== undefined) {
     if (typeof FormData !== 'undefined' && body instanceof FormData) {
